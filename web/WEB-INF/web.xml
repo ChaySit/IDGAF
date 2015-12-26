@@ -20,7 +20,7 @@
     <servlet>
         <servlet-name>FirstServlet</servlet-name>
         <servlet-class>src.FirstServlet</servlet-class>
-    </servlet>
+        </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
