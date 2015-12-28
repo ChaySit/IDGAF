@@ -20,7 +20,7 @@
     <servlet>
         <servlet-name>FirstServlet</servlet-name>
         <servlet-class>src.FirstServlet</servlet-class>
-        </servlet>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
@@ -35,6 +35,7 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>forwardToJSF.jsp</welcome-file>
-        </welcome-file-list>
-    </web-app>
+        <!--        <welcome-file>forwardToJSF.jsp</welcome-file>-->
+        <welcome-file>studentLoginPage.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>
