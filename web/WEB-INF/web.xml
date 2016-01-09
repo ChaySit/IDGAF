@@ -17,9 +17,13 @@
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
-    <servlet>
+<!--    <servlet>
         <servlet-name>FirstServlet</servlet-name>
         <servlet-class>src.FirstServlet</servlet-class>
+    </servlet>-->
+    <servlet>
+        <servlet-name>AccueilEtuServlet</servlet-name>
+        <servlet-class>Controller.AccueilEtuServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
@@ -28,6 +32,10 @@
     <servlet-mapping>
         <servlet-name>FirstServlet</servlet-name>
         <url-pattern>/FirstServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AccueilEtuServlet</servlet-name>
+        <url-pattern>/AccueilEtuServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
