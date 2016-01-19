@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author star
  */
-public class accueilCompServlet extends HttpServlet {
+public class AccueilCompServlet extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -33,10 +33,10 @@ public class accueilCompServlet extends HttpServlet {
             /* TODO output your page here
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet accueilCompServlet</title>");  
+            out.println("<title>Servlet AccueilCompServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet accueilCompServlet at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet AccueilCompServlet at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
             */
