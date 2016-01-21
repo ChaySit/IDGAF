@@ -12,41 +12,34 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import javax.servlet.http.HttpSession;
+import university.beans.*;
+import university.dao.DAOException;
+import university.dao.UserDao;
+//import university.dao.UserDaoImpl;
+
 /**
  *
- * @author star
+ * @author olga
  */
 public class ConnexionServlet extends HttpServlet {
-   
-    /** 
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        try {
-            /* TODO output your page here
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet connexionServlet</title>");  
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet connexionServlet at " + request.getContextPath () + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-            */
-        } finally { 
-            out.close();
-        }
-    } 
+    public static final String ATTR_LOGIN = "login";
+    public static final String ATTR_PASWWORD = "password";
+    public static final String ATT_SESSION_USER = "sessionUser";
+
+
+
+    //connexion with database
+   // a revoir
+    //User userType = this.loginUniversity(ATTR_LOGIN, ATTR_PASWWORD);
+    Student checkStudent = new Student();
+    Tutor checkTutor = new Tutor();
+    private String nextPage;
+    int id = 0;
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -56,10 +49,28 @@ public class ConnexionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
-    } 
 
-    /** 
+        HttpSession session = request.getSession();
+
+        if (checkStudent.isStudent() == true){
+            nextPage = "/accueilEtud.jsp";
+            this.getServletContext().getRequestDispatcher(nextPage).forward(request, response);
+            //System.out.println("User type : "+userType);
+        }
+        else if (checkTutor.isStudent() == false ){
+            nextPage = "/accueilTuteur.jsp";
+            this.getServletContext().getRequestDispatcher(nextPage).forward(request, response);
+           // System.out.println("User type : "+userType);
+        }
+        else {
+            nextPage = "/portailUniv.jsp";
+            this.getServletContext().getRequestDispatcher(nextPage).forward(request, response);
+            System.err.println("Erreur de login, veuillez rentrer un login correct svp");
+        }
+
+    }
+
+    /**
      * Handles the HTTP <code>POST</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -69,16 +80,53 @@ public class ConnexionServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+
+//        String result;
+//        String login = request.getParameter(ATTR_LOGIN).trim();
+//        String password = request.getParameter(ATTR_PASWWORD).trim();
+//        HttpSession session = request.getSession();
+//        session.setAttribute("login", login);
+//        session.setAttribute(ATT_SESSION_USER, login);
+
+                HttpSession session = request.getSession();
+
+        if (checkStudent.isStudent() == true){
+            nextPage = "/accueilEtud.jsp";
+            this.getServletContext().getRequestDispatcher(nextPage).forward(request, response);
+            //System.out.println("User type : "+userType);
+        }
+        else if (checkTutor.isStudent() == false ){
+            nextPage = "/accueilTuteur.jsp";
+            this.getServletContext().getRequestDispatcher(nextPage).forward(request, response);
+           // System.out.println("User type : "+userType);
+        }
+        else {
+            nextPage = "/portailUniv.jsp";
+            this.getServletContext().getRequestDispatcher(nextPage).forward(request, response);
+            System.err.println("Erreur de login, veuillez rentrer un login correct svp");
+        }
+
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
      * @return a String containing servlet description
      */
     @Override
     public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+        return "In ConnexionServlet : Servlet en charge de rédiriger vers la bonne page selon que tu es étudiant ou tuteur ";
+    }
+
+//    public User loginUniversity(String login, String password) throws DAOException {
+//        throw new UnsupportedOperationException("Not supported yet.");
+//    }
+//
+//    public Student retrieveStudentFromMail(String mail) throws DAOException {
+//        throw new UnsupportedOperationException("Not supported yet.");
+//    }
+//
+//    public Student retrieveStudentFromUserID(Long ID) throws DAOException {
+//        throw new UnsupportedOperationException("Not supported yet.");
+//    }
 
 }

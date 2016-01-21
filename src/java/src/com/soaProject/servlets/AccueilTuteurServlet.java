@@ -8,7 +8,7 @@ import javax.servlet.http.*;
 
 public class AccueilTuteurServlet extends HttpServlet {
 
-        public static final String VUE_FORM = "/WEB-INF/accueilTuteur.jsp";
+        public static final String VUE_FORM = "/accueilTuteur.jsp";
 
     @Override
         public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
